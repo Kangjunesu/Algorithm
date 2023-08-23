@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Solution {
     public int[] solution(int k, int[] score) {
         int[] result = new int[score.length];  
