@@ -4,12 +4,12 @@ class Solution {
     public int solution(int a, int b, int n) {
         int answer = 0;
 
-        do{
-            int k = (n/a)*b;
+        while (n >= a) {
+            int k = (n / a) * b;
             answer += k;
-            n = (n-(n/a)*a)+k;
-        }while (n>=a);
-        
+            n = (n % a) + k;
+        }
+
         return answer;
     }
 }
