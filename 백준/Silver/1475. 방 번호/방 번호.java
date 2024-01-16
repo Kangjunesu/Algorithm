@@ -14,10 +14,6 @@ public class Main {
                 inputNum.setCharAt(i, '6');
             }
         }
-        String x ="";
-        for(int i=0; i<inputNum.length(); i++){
-            x += "x";
-        }
 
         List<StringBuilder> aswList = new ArrayList<>();
         aswList.add(new StringBuilder("0123456786"));
