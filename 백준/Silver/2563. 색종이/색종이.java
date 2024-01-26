@@ -2,33 +2,44 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static boolean [][]boards;
+    static int [][] papers;
+    static int cnt;
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        papers = new int[n][2];
 
-        int n = Integer.parseInt(br.readLine());  //색종이수
-        
-        int [][] a = new int[n][2];  
-        for (int i = 0; i < n; i++) {  //색종이의 왼쪽아래 좌표 초기화
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            a[i][0] = Integer.parseInt(st.nextToken());
-            a[i][1] = Integer.parseInt(st.nextToken());
+        StringTokenizer st;
+        for(int i =0; i<n; i++){
+            st = new StringTokenizer(br.readLine());
+            for(int j=0; j<2; j++) {
+                papers[i][j] = Integer.parseInt(st.nextToken());
+            }
         }
+        // System.out.println(Arrays.deepToString(papers));
 
-        boolean [][] paper = new boolean[100][100];
-        int cnt =0;
-        for(int i=0; i<n; i++){ //n 색종이 개수
-            for(int j=0; j<10; j++){
-                for(int k =0; k<10; k++){
+        boards = new boolean[100][100];
+        cnt=0;
+        for(int i =0; i<n; i++){
+            check(papers[i][0], papers[i][1]);
+        }
+        System.out.println(cnt);
+        
+    }
 
-                    if(!(paper[a[i][0]+j][a[i][1]+k])){
-                        paper[a[i][0]+j][a[i][1]+k]=true;
-                        cnt++;
-                    }
-
+    private static void check(int x, int y){
+        for(int i= x; i<x+10; i++){
+            for(int j =y; j<y+10; j++){
+                if(!boards[i][j]){
+                    boards[i][j]= true;
+                    cnt++;
                 }
             }
         }
-        System.out.println(cnt);
     }
+
+
 }
