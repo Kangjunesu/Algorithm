@@ -1,21 +1,23 @@
 import java.io.*;
 
-public class Main { 
+public class Main {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String input = br.readLine();
 
-        int length = input.length();
-        long asw = 0;
+        String N = br.readLine();
 
-        for(long i=1; i<=length; i++ ){
-            if(i<length){
-                asw += i*9*Math.pow(10,i-1);
-            }else{ //i == length
-                long nums = Long.parseLong(input)-(long)Math.pow(10,i-1)+1;
-                asw +=i*nums;
+        long asw=0;
+
+        if(N.length()==1){
+            System.out.println(Integer.parseInt(N));
+        }else{
+            for(int i=1; i<N.length(); i++){
+                asw +=  9 * Math.pow(10, i - 1) * i;
             }
+            asw += ((Long.parseLong(N) - Math.pow(10, N.length() - 1) + 1) * N.length());
+            System.out.println(asw);
         }
-        System.out.println(asw);
+        
     }
 }
