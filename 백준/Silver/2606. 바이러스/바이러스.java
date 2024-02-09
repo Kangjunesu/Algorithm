@@ -33,31 +33,21 @@ public class Main {
             arr[b].add(a);
         }
 
-        bfs(1);
+        dfs(1);
         System.out.println(asw.size()-1);
-
 
     }
 
-
-    static void bfs(int i){
-        Queue<Integer> q = new LinkedList<>();
-        isVisit[i]= true;
-        q.add(i);
-        while (!q.isEmpty()){
-            int a = q.poll();
-            asw.add(a);
-//            System.out.println(asw);
-            for(int j: arr[a]){
-                if(!isVisit[j]){
-                    q.add(j);
-                    isVisit[j] =true;
-                }
+    static void dfs(int i){
+        isVisit[i] = true;
+        asw.add(i);
+ //       System.out.println(asw);
+        for(int j : arr[i]){
+            if(!isVisit[j]){
+                dfs(j);
             }
-
         }
 
     }
-
 
 }
